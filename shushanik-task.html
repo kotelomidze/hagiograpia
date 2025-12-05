@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>დავალებები I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV და XV თავების მიხედვით</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: The application uses a vertical layout with interactive, collapsible "accordion" cards for each assignment. This structure organizes the growing number of questions into a clean, focused, and user-friendly experience. It prevents overwhelming the user and allows them to engage with one assignment at a time by clicking a card's header to reveal its content. -->
+    <!-- Visualization & Content Choices: Report Info: Multiple text-based assignments across multiple chapters. Goal: Organize and present content for easy exploration. Viz/Presentation Method: Styled HTML/Tailwind cards. Interaction: JavaScript-powered click-to-expand/collapse accordion functionality. Justification: This method is ideal for purely textual content, enhancing usability and focus. It transforms a long list into a manageable and visually appealing format. Library/Method: Vanilla JS, Tailwind CSS. CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            background-color: #FDFBF5;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 1000px; /* Increased height to accommodate all questions */
+        }
+        .icon-plus, .icon-minus {
+            transition: transform 0.3s ease-in-out;
+        }
+        .icon-minus {
+            display: none;
+        }
+        .open .icon-plus {
+            display: none;
+        }
+        .open .icon-minus {
+            display: block;
+        }
+        .justify-text {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <header class="text-center mb-12 relative">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">„შუშანიკის წამების“ დავალებები</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto"></p>
+            <div class="absolute top-0 right-0 text-lg font-semibold text-amber-900"></div>
+        </header>
+
+        <main class="max-w-3xl mx-auto space-y-6">
+
+            <!-- დავალება 1.1 -->
+            <div id="task-1" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 1.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">პოლიტიკური ამბიცია ან პირადი გამორჩენა ხშირად უბიძგებს ადამიანს, უღალატოს საკუთარ მრწამსს, ოჯახსა და მემკვიდრეობას.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორ ვლინდება ეს პრობლემა ვარსქენ პიტიახშის საქციელში, როდესაც ის სპარსეთის სამეფო კარზე იმყოფება.</li>
+                            <li>რამდენად აქტუალურია დღეს ღირებულებებზე უარის თქმა კარიერული წინსვლის ან მატერიალური სარგებლის მიღების მიზნით?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 1.2 -->
+            <div id="task-2" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 1.2</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ტექსტში ავტორი ვარსქენის საქციელს ხსნის არა იძულებით, არამედ პირადი სურვილით („რომელსა არცა ჭირი ეხილვა, არცა შიში, არცა მახჳლი“).</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, რატომ ამახვილებს ავტორი ყურადღებას იმ ფაქტზე, რომ ვარსქენი მოქმედებდა არა იძულებით, არამედ საკუთარი ნებით. რა მნიშვნელობა აქვს ამ დეტალს მისი პერსონაჟის შესაფასებლად?</li>
+                            <li>თქვენი აზრით, რომელი უფრო დიდი ღალატია: ღალატი, რომელიც ჩადენილია იძულებით, თუ ღალატი, რომელიც პირადი გამორჩენის სურვილით არის ნაკარნახევი? დაასაბუთეთ თანამედროვე მაგალითებით.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 1.3 -->
+            <div id="task-3" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 1.3</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ხშირად ადამიანი, რომელიც არასწორ ნაბიჯს დგამს, ცდილობს, თავის მცდარ არჩევანში სხვებიც ჩაითრიოს, რათა საკუთარი საქციელი გაამართლოს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>როგორ ჩანს ეს პარსქენის დაპირებაში, რომელიც მან სპარსეთის მეფეს მისცა („რომელი-იგი ბუნებითი ცოლი არს და შვილნი, იგინიცა ესრევე მოვაქცინე შენსა შჯულსა“)?</li>
+                            <li>განსხვავდება თუ არა ვარსქენის ეს ქმედება იმ ადამიანების საქციელისგან, რომლებიც დღეს ცდილობენ, ახლობლები საკუთარი მცდარი შეხედულებების ან ცხოვრების წესის ნაწილად აქციონ?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 2.1 -->
+            <div id="task-4" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 2.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ღრმად მორწმუნე ადამიანისთვის სულიერი სიცოცხლე და ღირებულებები ხშირად ფიზიკურ არსებობაზე მაღლა დგას.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>გააანალიზეთ შუშანიკის პირველი რეაქცია და მისი სიტყვები მსახურისადმი: „უკუეთუ სულითა ცხოველ არს იგი, ცოცხალმცა ხართ... უკუეთუ სულითა მომკუდარ ხართ, მოკითხვაჲ ეგე შენი შენდავე მოიქეცინ“. რას გვეუბნება ეს ფრაზა მის ფასეულობათა სისტემაზე?</li>
+                            <li>რამდენად გასაგებია შუშანიკის ეს პოზიცია თანამედროვე საზოგადოებისთვის?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 2.2 -->
+            <div id="task-5" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 2.2</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">კრიტიკულ მომენტში ადამიანის მიერ მიღებული პირველი, დაუყოვნებელი გადაწყვეტილება ყველაზე ნათლად აჩვენებს მის ხასიათსა და პრინციპებს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, რაზე მეტყველებს შუშანიკის ქმედება: როდესაც ის ვარსქენის განდგომის შესახებ იგებს, ტოვებს სასახლეს, მიჰყავს შვილები ეკლესიაში და განმარტოვდება პატარა სახლაკში.</li>
+                            <li>არის თუ არა ასეთი უკომპრომისო ნაბიჯი სიძლიერის ნიშანი, თუ შეიძლება ის ხისტ და არაპრაგმატულ საქციელად ჩაითვალოს თანამედროვე გადმოსახედიდან?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 2.3 -->
+            <div id="task-6" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 2.3</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">მშობლის ერთ-ერთ მთავარ მოვალეობად ხშირად მიიჩნევა შვილების სულიერ და ზნეობრივ აღზრდაზე ზრუნვა, თუნდაც ეს მეორე მშობელთან დაპირისპირების ფასად მოხდეს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>როგორ ვლინდება ეს პასუხისმგებლობა შუშანიკის ლოცვაში, როდესაც ის შვილებს საკურთხევლის წინაშე წარადგენს?</li>
+                            <li>იმსჯელეთ, რა სირთულეების წინაშე დგანან დღეს ის მშობლები, რომლებსაც ფუნდამენტურად განსხვავებული ღირებულებები აქვთ და ცდილობენ, საკუთარი პრინციპებით აღზარდონ შვილები.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 3.1 -->
+            <div id="task-7" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 3.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ზოგჯერ ერთი ადამიანის პირადი ტრაგედია და ბრძოლა მთელი საზოგადოების ან თემის საერთო განსაცდელად იქცევა.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>გააანალიზეთ დიალოგი შუშანიკსა და ხუცესს შორის, კერძოდ კი, მღვდლის სიტყვები: „ჭირი შენი. ჭირი ჩუენი არს და სიხარული შენი, სიხარული ჩუენი არს“. რატომ აღიქვამს სასულიერო პირი დედოფლის პირად განსაცდელს საერთო საქმედ?</li>
+                            <li>იმსჯელეთ, რა შემთხვევაში ხდება ერთი ადამიანის ბრძოლა საზოგადოებისთვის სიმბოლური და შთაგონების წყარო თანამედროვეობაში.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 3.2 -->
+            <div id="task-8" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 3.2</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ჭეშმარიტი სიმტკიცე მაშინ ვლინდება, როდესაც ადამიანი სრულად აცნობიერებს მოსალოდნელ ტანჯვასა და საფრთხეს, მაგრამ მაინც შეგნებულად ირჩევს პრინციპების ერთგულებას.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>როგორ აჩვენებს შუშანიკის საუბარი ხუცესთან, რომ მისი გადაწყვეტილება არა მხოლოდ ემოციური რეაქცია, არამედ გააზრებული მზადყოფნაა მოწამეობრივი ღვაწლისთვის? („უმჯობჱს არს ჩემდა ჴელთა მისთაგან სიკუდილი, ვიდრე ჩემი და მისი შეკრებაჲ და წარწყმედაჲ სულისა ჩემისაჲ“).</li>
+                            <li>თქვენი აზრით, რა არის საჭირო იმისთვის, რომ ადამიანმა დღეს ასეთი სიმტკიცე შეინარჩუნოს უსამართლობისა და ზეწოლის პირისპირ?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 3.3 -->
+            <div id="task-9" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 3.3</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">რთული გადაწყვეტილების მისაღებად ადამიანი ხშირად ეძებს საყრდენს ავტორიტეტულ წყაროში – იქნება ეს რელიგიური ტექსტი, კანონი თუ ფილოსოფიური იდეა.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, რა როლს ასრულებს პავლე მოციქულის სიტყვების გახსენება შუშანიკისთვის. როგორ ამყარებს ეს ციტატა მისი გადაწყვეტილების მორალურ და თეოლოგიურ ლეგიტიმურობას?</li>
+                            <li>რა გზებით იყენებენ ადამიანები დღეს მსგავს ავტორიტეტულ წყაროებს პირადი თუ საზოგადოებრივი არჩევანის გასამართლებლად?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- დავალება 4.1 -->
+            <div id="task-10" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 4.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ხშირად მოწინააღმდეგეები პირდაპირი აგრესიის ნაცვლად ცბიერებასა და ფსიქოლოგიურ მანიპულაციას იყენებენ, რათა მსხვერპლის მზადყოფნა შეამოწმონ და მისი ნდობა მოიპოვონ.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორ ვლინდება ეს ტაქტიკა თავში მოყვანილი სპარსი კაცის ქმედებაში.</li>
+                            <li>რამდენად აქტუალურია დღეს „მზრუნველი მტრის“ ფენომენი პოლიტიკურ თუ პირად ურთიერთობებში, როდესაც მოწინააღმდეგე მეგობრის ნიღბით ცდილობს მიზნის მიღწევას?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 4.2 -->
+            <div id="task-11" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 4.2</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ადამიანი, რომელმაც უღალატა საკუთარ ფესვებსა და ღირებულებებს, ხშირად ცდილობს, თავისი საქციელის პასუხისმგებლობა სხვას გადააბრალოს და თავი მსხვერპლად წარმოაჩინოს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>გააანალიზეთ ვარსქენის ბრალდება შუშანიკის მიმართ: „შენ ჩემი ხატი დაამᴴუ და საგებელსა ჩემსა ნაცარი გარდაასხ“. როგორ ცდილობს პიტიახში ამ სიტყვებით თავდამსხმელიდან მსხვერპლის როლში გადაინაცვლოს?</li>
+                            <li>განიხილეთ, რამდენად ხშირად მიმართავენ ადამიანები მსგავს სტრატეგიას თანამედროვე კონფლიქტურ სიტუაციებში, როდესაც საკუთარი დანაშაულის გასამართლებლად სხვას ადანაშაულებენ ოჯახის ან ურთიერთობის დანგრევაში.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- დავალება 4.3 -->
+            <div id="task-12" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 4.3</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ზნეობრივი უპირატესობის მქონე ადამიანი კამათისას ხშირად ეყრდნობა არა პირად წყენას, არამედ ფუნდამენტურ, საყოველთაო პრინციპებსა და თაობათა მემკვიდრეობას.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორ იყენებს შუშანიკი ამ სტრატეგიას, როდესაც ვარსქენის პირად ბრალდებას უპასუხებს არა პირადი თავდაცვით, არამედ ვარსქენისა და მისი მამის საქმეების შედარებით („მამამან შენმან ეკლესიანი აღაშჱნნა, და შენ მამისა შენისა საქმენი განჰრყუნენ“).</li>
+                            <li>რამდენად ეფექტურია დღეს დებატებისას არგუმენტების გამყარება არა პირადი ემოციებით, არამედ ზოგადსაკაცობრიო ან ისტორიულ ღირებულებებზე აპელირებით?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 5.1 -->
+            <div id="task-13" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 5.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ზეწოლის გასაძლიერებლად მოძალადე ხშირად იყენებს მსხვერპლის ახლობლებსა და ნათესავებს, რათა ემოციური შანტაჟისა და ოჯახური კავშირების მეშვეობით დაარღვიოს მისი წინააღმდეგობა.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>გააანალიზეთ ვარსქენის გადაწყვეტილება, გაგზავნოს შუშანიკთან თავისი ძმა ჯოჯიკი, რძალი და ეპისკოპოსი.</li>
+                            <li>განიხილეთ, რამდენად მძლავრი იარაღია თანამედროვე სამყაროში ოჯახური კავშირებით მანიპულირება, როდესაც ადამიანს აიძულებენ, საკუთარი პრინციპები „ოჯახის სიმშვიდის“ ან „სახელის შენარჩუნების“ გამო დათმოს.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 5.2 -->
+            <div id="task-14" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 5.2</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ღირებულებათა ღალატის დროს ზოგიერთი ადამიანისთვის სისხლით ნათესაობა კარგავს თავის მნიშვნელობას და სულიერი ერთობა უფრო მაღლა დგას.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ შუშანიკის პასუხზე: „შენ, ჯოჯიკ, არღარა ჩემი მაზლი ხარ... რომელნი მის კერძო და მისთა საქმეთა ზიარ ხართ“. როგორ და რატომ განსაზღვრავს შუშანიკი ნათესაურ კავშირებს არა სისხლის, არამედ მორალური არჩევანის მიხედვით?</li>
+                            <li>რამდენად აქტუალურია დღეს იდეა, რომ საერთო ღირებულებები და პრინციპები შეიძლება უფრო ძლიერი კავშირი აღმოჩნდეს, ვიდრე ბიოლოგიური ნათესაობა?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 5.3 -->
+            <div id="task-15" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 5.3</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">უკიდურესი განსაცდელის ჟამს ადამიანი, რომელიც ახლობლებისგანაც კი ვერ პოულობს მხარდაჭერას, შესაძლოა სრულ იზოლაციაში აღმოჩნდეს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>გააანალიზეთ შუშანიკის სასოწარკვეთილი სიტყვები სასახლეში იძულებით დაბრუნების შემდეგ: „არცა მღდელთაგანი ვინ იპოვა მოწყალჱ, არცა ერისა კაცი ვინ გამოჩნდა... არამედ ყოველთა მე სიკუდილდ მიმითუალეს“. რას გვეუბნება ეს ფრაზა მის ემოციურ მდგომარეობასა და საზოგადოების როლზე?</li>
+                            <li>განიხილეთ, რა ფსიქოლოგიურ გავლენას ახდენს ადამიანზე სრული იზოლაციის განცდა, როდესაც ის პრინციპული პოზიციის გამო მარტო რჩება მჩაგვრელის პირისპირ.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 6.1 -->
+            <div id="task-16" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 6.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">როდესაც ფსიქოლოგიური ზეწოლა და მანიპულაცია უშედეგოა, აგრესორი ხშირად კარგავს კონტროლს და ცხოველურ, უკონტროლო ძალადობაზე გადადის.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორ არის წარმოდგენილი ეს გადასვლა ვარსქენის საქციელში: თავდაპირველად ის ცდილობს შუშანიკის პურობაზე მოტყუებით შემორიგებას, ხოლო მისი დაუმორჩილებლობის შემდეგ იწყებს მის სასტიკ ცემას („ფერᴴითა დასთრგუნვიდა... უხეთქნა მას თავსა“).</li>
+                            <li>რამდენად ხშირია თანამედროვე კონფლიქტებში (მაგალითად, ოჯახურ ძალადობაში) მსგავსი ესკალაცია, როდესაც სიტყვიერი აგრესია ფიზიკურ ანგარიშსწორებაში გადაიზრდება?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 6.2 -->
+            <div id="task-17" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 6.2</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ადამიანი, რომელიც საზოგადოებრივ ნორმებს არღვევს, ხშირად ცდილობს, თავისი მსხვერპლიც აიძულოს, დაარღვიოს ტრადიცია, რათა ამით ის გატეხოს და საკუთარ დონემდე დაიყვანოს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>გააანალიზეთ ეპიზოდი, რომელშიც ვარსქენი შუშანიკს აიძულებს, დაარღვიოს იმ დროისთვის მიღებული წესი და კაცებთან ერთად ჭამოს პური. რატომ გახდა შუშანიკის უარი („ოდეს ყოფილ არს აქამომდე, თუმცა მამათა და დედათა ერთად ეჭამა პური?!“) ვარსქენის მძვინვარების საბოლოო კატალიზატორი?</li>
+                            <li>განიხილეთ, როგორ გამოიყენება დღეს ტრადიციებისა და სოციალური ნორმების დარღვევის იძულება ადამიანის მორალურად გასატეხად ან მისი ღირსების შესალახად.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 6.3 -->
+            <div id="task-18" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 6.3</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">უკიდურესი სისასტიკის მომენტშიც კი, შესაძლოა, ადამიანმა, რომელიც მანამდე პასიური იყო ან აგრესორის მხარეს იდგა, მოულოდნელად გამოიჩინოს თანაგრძნობა და ჩაერიოს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ ჯოჯიკის ქმედებაზე, რომელიც მანამდე ძმის დავალებას ასრულებდა, მაგრამ შუშანიკის სასტიკი ცემის დროს „შუელად აღდგა“ და ვარსქენს შეებრძოლა, რის გამოც თავადაც დაზარალდა. რა შეიძლება ყოფილიყო მისი მოტივაციის ცვლილების მიზეზი?</li>
+                            <li>რამდენად რეალურია, რომ მოძალადის უკიდურესმა სისასტიკემ შეიძლება „გამოაფხიზლოს“ პასიური დამკვირვებელი და მას ჩარევისკენ უბიძგოს თანამედროვე საზოგადოებაში?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 7.1 -->
+            <div id="task-19" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 7.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">მატერიალურ საგნებზე უარის თქმა ხშირად სულიერი თავისუფლების მიღწევისა და მიწიერ, მჩაგვრელ სისტემასთან კავშირის საბოლოოდ გაწყვეტის მძლავრი სიმბოლოა.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>გააანალიზეთ შუშანიკისა და ვარსქენის დიამეტრულად განსხვავებული დამოკიდებულება სამკაულების („სამკაული ესე“) მიმართ. რას გვეუბნება თითოეული პერსონაჟის ღირებულებებზე ის, რომ შუშანიკი სიხარულით თმობს ქონებას, ხოლო ვარსქენი გულმოდგინედ ამოწმებს მის სისრულეს?</li>
+                            <li>იმსჯელეთ მატერიალიზმისა და შინაგანი თავისუფლების დაპირისპირებაზე თანამედროვე სამყაროში.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 8.1 -->
+            <div id="task-20" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 8.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ფიზიკური ძალის პირისპირ მსხვერპლის მდუმარე გამძლეობა შეიძლება იქცეს წინააღმდეგობის ყველაზე მძლავრ ფორმად.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორ იქცევა შუშანიკის მდუმარება („არარაჲ აღმოᴶᴁდა პირსა მისსა ვაჲებაჲ“) მისი მორალური გამარჯვების სიმბოლოდ.</li>
+                            <li>რა ფორმებით გვხვდება მდუმარე პროტესტი ან არაძალადობრივი წინააღმდეგობა თანამედროვე კონფლიქტებში და რამდენად ეფექტურია ის?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 9.1 -->
+            <div id="task-21" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 9.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">მჩაგვრელი ხშირად იყენებს საჯარო დამცირებას, როგორც იარაღს, რათა გატეხოს მსხვერპლის სული და ამავდროულად გააფრთხილოს სხვები.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>აღწერეთ, როგორ ცდილობს ვარსქენი, შუშანიკის ციხისკენ მსვლელობა („უᴁამური და თმაგარდატევებული“) დამცირების საჯარო სანახაობად აქციოს.</li>
+                            <li>როგორ ახერხებს შუშანიკი ხალხისადმი მიმართვით შეცვალოს ამ პროცესიის მნიშვნელობა და საკუთარი დამცირება მორალურ ტრიუმფად გარდაქმნას? იმსჯელეთ ამ დინამიკის თანამედროვე მაგალითებზე.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 10.1 -->
+            <div id="task-22" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 10.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">მჩაგვრელ სისტემაშიც კი ერთი ადამიანის შუამდგომლობამ, რომელიც სინდისის ქენჯნით ან პირადი კავშირებითაა განპირობებული, შეიძლება მცირე, მაგრამ მნიშვნელოვანი შვება მოუტანოს მსხვერპლს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ ჯოჯიკის როლზე ამ თავში.</li>
+                            <li>რა სირთულეებისა და მნიშვნელობის მატარებელია შუამავლის ან დამცველის როლი უსამართლო სიტუაციებში თანამედროვე სამყაროში?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- დავალება 11.1 -->
+            <div id="task-23" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 11.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ზოგჯერ სასტიკი დევნისა და ტანჯვის მსხვერპლი ახერხებს, გასცდეს საკუთარ ტკივილს და იქცეს საზოგადოებისათვის განკურნების, იმედისა და სულიერი ძალაუფლების წყაროდ.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორ არის აღწერილი XI თავში შუშანიკის ტრანსფორმაცია ნაწამები პატიმრიდან სასწაულმოქმედ წმინდანად, რომელთანაც მთელი ქართლიდან მიდიან შველის სათხოვნელად.</li>
+                            <li>რა ფსიქოლოგიური ან სოციალური ფენომენი უდევს საფუძვლად იმ ფაქტს, რომ უდიდესი უსამართლობის მსხვერპლი ხშირად საზოგადოების თვალში უმაღლეს მორალურ ავტორიტეტად და თაყვანისცემის ობიექტად იქცევა?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 12.1 -->
+            <div id="task-24" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 12.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">პრინციპების ერთგული ადამიანისთვის საყვარელი ადამიანის მიერ ფუნდამენტური ღირებულებების ღალატმა შეიძლება გამოიწვიოს მასთან კავშირის სრული და, ერთი შეხედვით, დაუნდობელი გაწყვეტა.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ შუშანიკის პოზიციაზე განდგომილიშვილების მიმართ („სახელიცა მათი სძაგდა სმენად“).</li>
+                            <li>იმსჯელეთ დღევანდელ დილემაზე, როდესაც ადამიანები შეურიგებელი იდეოლოგიური თუ მორალური განსხვავებების გამო წყვეტენ ოჯახის წევრებთან ურთიერთობას.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- დავალება 13.1 -->
+            <div id="task-25" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 13.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ზოგჯერ მოწინააღმდეგის დამარცხების საუკეთესო გზაა, ის საკუთარი მუქარებისა და განცხადებების ლოგიკურ ხაფანგში მოაქციო.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>როგორ იყენებს შუშანიკი ვარსქენის ძველ მუქარას („ცოცხალითა ფერᴴითა არა გამოხვიდე“) იმის დასამტკიცებლად, რომ მისი ამჟამინდელი მდგომარეობა ვარსქენის ნებას აღარ ექვემდებარება?</li>
+                            <li>რამდენად ეფექტურია კამათისას ეს ტაქტიკა — მოწინააღმდეგის სიტყვების მისივე წინააღმდეგ გამოყენება?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 14.1-15.1 -->
+            <div id="task-26" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 14.1-15.1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ადამიანის ნამდვილი თავგანწირვა და მისი ტანჯვის სრული მასშტაბი ხშირად საგულდაგულოდ არის დამალული საზოგადოების თვალისგან და მხოლოდ მცირედთათვის ხდება ცნობილი.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>როგორ არის ეს საკითხი წარმოჩენილი XIV-XV თავებში და რამდენად აქტუალურია დღეს?</li>
+                            <li>რა მნიშვნელობა აქვს ამ ფარული დეტალების გამჟღავნებას შუშანიკის სიწმინდის სრული სურათის შესაქმნელად?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const isOpen = this.getAttribute('aria-expanded') === 'true';
+
+                    this.setAttribute('aria-expanded', !isOpen);
+                    this.parentElement.classList.toggle('open');
+                    content.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>დავალებები I, II, III თავების მიხედვით</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: The application uses a vertical layout with interactive, collapsible "accordion" cards for each assignment. This structure organizes the growing number of questions into a clean, focused, and user-friendly experience. It prevents overwhelming the user and allows them to engage with one assignment at a time by clicking a card's header to reveal its content. -->
+    <!-- Visualization & Content Choices: Report Info: Multiple text-based assignments across multiple chapters. Goal: Organize and present content for easy exploration. Viz/Presentation Method: Styled HTML/Tailwind cards. Interaction: JavaScript-powered click-to-expand/collapse accordion functionality. Justification: This method is ideal for purely textual content, enhancing usability and focus. It transforms a long list into a manageable and visually appealing format. Library/Method: Vanilla JS, Tailwind CSS. CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            background-color: #FDFBF5;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 1000px; /* Increased height to accommodate all questions */
+        }
+        .icon-plus, .icon-minus {
+            transition: transform 0.3s ease-in-out;
+        }
+        .icon-minus {
+            display: none;
+        }
+        .open .icon-plus {
+            display: none;
+        }
+        .open .icon-minus {
+            display: block;
+        }
+        .justify-text {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <header class="text-center mb-12 relative">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">„აბოს წამების“ დავალებები</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto"></p>
+            <div class="absolute top-0 right-0 text-lg font-semibold text-amber-900"> </div>
+        </header>
+
+        <main class="max-w-3xl mx-auto space-y-6">
+
+            <!-- დავალება 1 -->
+            <div id="task-1" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 1</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ქვეყნის კულტურული თუ რელიგიური მემკვიდრეობა და ისტორიული მეხსიერება მნიშვნელოვან როლს თამაშობს ეროვნული იდენტობის ფორმირებაში.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორაა წარმოჩენილი I თავში ეს საკითხი და რამდენად აქტუალურია იგი.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 2 -->
+            <div id="task-2" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 2</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">რამდენად შესაძლებელია, რომ ადამიანმა ძლიერი სოციალური წნეხის პირობებში შეინარჩუნოს საკუთარი მოსაზრებები და პრინციპები.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორაა წარმოჩენილი III თავში ეს საკითხი და რამდენად აქტუალურია იგი.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 3 -->
+            <div id="task-3" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 3</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ადამიანის არჩევანი ხშირად განსაზღვრავს არა მხოლოდ მის პირად ბედს, არამედ სხვებისთვისაც ხდება მაგალითი.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორაა წარმოჩენილი „აბოს წამებაში“ ეს საკითხი და რამდენად აქტუალურია იგი.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 4 -->
+            <div id="task-4" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 4</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ზოგჯერ ახალი რწმენის მიღება ან შეხედულებათა შეცვლა ოჯახისა თუ სანათესაოს  „ღალატად“ აღიქმება.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორაა წარმოჩენილი „აბოს წამებაში“ ეს საკითხი და რამდენად აქტუალურია იგი.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 5 -->
+            <div id="task-5" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 5</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">საკუთარი რწმენის ერთგულება ზოგჯერ სიცოცხლეზე მაღლა დგება.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორაა წარმოჩენილი „აბოს წამებაში“ ეს საკითხი და რამდენად აქტუალურია იგი.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- დავალება 6 -->
+            <div id="task-6" class="bg-white rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+                <button class="accordion-header w-full flex justify-between items-center text-left p-6 focus:outline-none" aria-expanded="false">
+                    <h2 class="text-xl font-semibold text-amber-900">დავალება 6</h2>
+                    <div class="text-2xl text-amber-900">
+                        <span class="icon-plus">+</span>
+                        <span class="icon-minus">-</span>
+                    </div>
+                </button>
+                <div class="accordion-content">
+                    <div class="px-6 pb-6 pt-2">
+                        <p class="justify-text text-base leading-relaxed mb-6">ზოგჯერ ადამიანის შიშზე ძლიერი ხდება სურვილი, საკუთარი რწმენა სხვებს გაუზიაროს.</p>
+                        <ul class="justify-text space-y-4 list-disc list-inside text-gray-700">
+                            <li>იმსჯელეთ, როგორაა წარმოჩენილი „აბოს წამებაში“ ეს საკითხი და რამდენად აქტუალურია იგი.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const isOpen = this.getAttribute('aria-expanded') === 'true';
+
+                    this.setAttribute('aria-expanded', !isOpen);
+                    this.parentElement.classList.toggle('open');
+                    content.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

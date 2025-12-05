@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ქართული ჰაგიოგრაფია</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Noto Sans Georgian', sans-serif;
+      }
+      .prose h1 { color: #b45309; border-bottom: 2px solid #e7e5e4; padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700; }
+      .prose p { margin-bottom: 1rem; color: #44403c; }
+      .prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+      .prose li { margin-bottom: 0.5rem; }
+      .content-box { background-color: #f5f5f4; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #e7e5e4; margin-top: 1.5rem; }
+      
+      .nav-item.active { background-color: #fef3c7; color: #78350f; font-weight: 600; border-right: 4px solid #d97706; }
+      .nav-item:not(.active):hover { background-color: #e7e5e4; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-stone-50 text-stone-900 h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-full md:w-72 bg-stone-100 border-r border-stone-200 flex flex-col h-full md:relative absolute z-30 transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+        <div class="p-5 border-b border-stone-200 flex items-center justify-between bg-stone-100">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-amber-700 rounded-lg text-white">
+                    <!-- Icon: Book -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <h2 class="font-bold text-lg text-stone-800 tracking-tight">GeoLit Hub</h2>
+            </div>
+            <button id="close-sidebar" class="md:hidden text-stone-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+        
+        <div id="nav-list" class="flex-1 overflow-y-auto py-4">
+            <!-- Navigation Items will be injected here by JS -->
+        </div>
+    </aside>
+
+    <!-- Overlay for mobile sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full relative w-full">
+        <!-- Mobile Header -->
+        <header class="md:hidden bg-white border-b border-stone-200 p-4 flex items-center justify-between z-10 shrink-0">
+            <button id="open-sidebar" class="text-stone-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+            <span class="font-bold text-stone-800">ფაილების მენეჯერი</span>
+            <div class="w-6"></div>
+        </header>
+
+        <!-- Tool Bar (Visible when a file is selected) -->
+        <div id="toolbar" class="hidden bg-stone-50 p-4 border-b border-stone-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0">
+            <div>
+                <h1 id="file-title" class="text-xl font-bold text-stone-900 flex items-center gap-2">
+                    <svg class="text-amber-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span id="filename-display">filename.html</span>
+                </h1>
+            </div>
+            
+            <div class="flex items-center gap-2 bg-white p-1 rounded-lg border border-stone-200 shadow-sm self-end sm:self-auto">
+                <button id="btn-preview" class="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors bg-amber-100 text-amber-800 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>ნახვა</span>
+                </button>
+                <button id="btn-code" class="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors text-stone-600 hover:bg-stone-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    <span>კოდი</span>
+                </button>
+                <div class="w-px h-6 bg-stone-200 mx-1"></div>
+                <button id="btn-download" class="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-stone-100 transition-colors" title="გადმოწერა">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    <span>გადმოწერა</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-auto p-4 md:p-8 relative bg-white" id="content-container">
+            <!-- Placeholder / Empty State -->
+            <div id="empty-state" class="flex flex-col items-center justify-center h-full text-stone-400">
+                <svg class="mb-4 text-stone-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <p class="text-lg">აირჩიეთ ფაილი მარცხენა მენიუდან</p>
+            </div>
+
+            <!-- HTML Preview -->
+            <div id="preview-view" class="hidden prose prose-stone max-w-none"></div>
+
+            <!-- Code View -->
+            <div id="code-view" class="hidden absolute inset-0 bg-stone-900 text-stone-100 p-6 overflow-auto font-mono text-sm leading-relaxed z-10">
+                <pre id="code-content"></pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const SITE_DATA = [
+          {
+            id: 'general',
+            title: 'ზოგადი მიმოხილვა',
+            fileName: 'hagiography_overview.html',
+            type: 'file',
+            content: `
+<h1>ჰაგიოგრაფიის ზოგადი მიმოხილვა</h1>
+<p>აქ უნდა განათავსოთ ტექსტი ჰაგიოგრაფიის შესახებ.</p>
+            `
+          },
+          {
+            id: 'shushanik',
+            title: 'შუშანიკის წამება',
+            fileName: 'shushanik_folder',
+            type: 'folder',
+            children: [
+              {
+                id: 'shushanik-overview',
+                title: 'მიმოხილვა',
+                fileName: 'shushanik_overview.html',
+                type: 'file',
+                content: `
+<h1>შუშანიკის წამება - მიმოხილვა</h1>
+<p>აქ უნდა განათავსოთ ნაწარმოების მიმოხილვა.</p>
+                `
+              },
+              {
+                id: 'shushanik-plan',
+                title: 'გეგმა',
+                fileName: 'shushanik_plan.html',
+                type: 'file',
+                content: `
+<h1>შუშანიკის წამების გეგმა</h1>
+<ol>
+  <li>პუნქტი 1</li>
+  <li>პუნქტი 2</li>
+  <li>პუნქტი 3</li>
+</ol>
+                `
+              },
+              {
+                id: 'shushanik-task',
+                title: 'დავალება',
+                fileName: 'shushanik_task.html',
+                type: 'file',
+                content: `
+<h1>დავალება: შუშანიკის წამება</h1>
+<div class="content-box">
+   <p>დაწერეთ დავალების პირობა აქ.</p>
+</div>
+                `
+              }
+            ]
+          },
+          {
+            id: 'abo',
+            title: 'აბოს წამება',
+            fileName: 'abo_folder',
+            type: 'folder',
+            children: [
+              {
+                id: 'abo-plan',
+                title: 'გეგმა',
+                fileName: 'abo_plan.html',
+                type: 'file',
+                content: `
+<h1>აბოს წამების გეგმა</h1>
+<ol>
+  <li>პუნქტი 1</li>
+  <li>პუნქტი 2</li>
+  <li>პუნქტი 3</li>
+</ol>
+                `
+              },
+              {
+                id: 'abo-task',
+                title: 'დავალება',
+                fileName: 'abo_task.html',
+                type: 'file',
+                content: `
+<h1>დავალება: აბოს წამება</h1>
+<div class="content-box">
+   <p>დაწერეთ დავალების პირობა აქ.</p>
+</div>
+                `
+              }
+            ]
+          },
+          {
+            id: 'grigol',
+            title: 'გრიგოლ ხანძთელი',
+            fileName: 'grigol_folder',
+            type: 'folder',
+            children: [
+              {
+                id: 'grigol-plan',
+                title: 'გეგმა',
+                fileName: 'grigol_plan.html',
+                type: 'file',
+                content: `
+<h1>გრიგოლ ხანძთელის გეგმა</h1>
+<ol>
+  <li>პუნქტი 1</li>
+  <li>პუნქტი 2</li>
+  <li>პუნქტი 3</li>
+</ol>
+                `
+              }
+            ]
+          }
+        ];
+
+        let activeNode = null;
+        let viewMode = 'preview';
+
+        const navList = document.getElementById('nav-list');
+        const emptyState = document.getElementById('empty-state');
+        const toolbar = document.getElementById('toolbar');
+        const previewView = document.getElementById('preview-view');
+        const codeView = document.getElementById('code-view');
+        const codeContent = document.getElementById('code-content');
+        const filenameDisplay = document.getElementById('filename-display');
+        
+        const btnPreview = document.getElementById('btn-preview');
+        const btnCode = document.getElementById('btn-code');
+        const btnDownload = document.getElementById('btn-download');
+
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const openSidebarBtn = document.getElementById('open-sidebar');
+        const closeSidebarBtn = document.getElementById('close-sidebar');
+
+        function generateFullHtml(node) {
+            return `<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${node.title}</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { color: #b45309; border-bottom: 2px solid #e7e5e4; padding-bottom: 10px; }
+        h2, h3 { color: #78350f; }
+        .content-box { background-color: #f5f5f4; padding: 20px; border-radius: 8px; border: 1px solid #e7e5e4; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    ${node.content.trim()}
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>`;
+        }
+
+        function renderSidebar() {
+            navList.innerHTML = '';
+            
+            function createItem(node, depth = 0) {
+                const isFolder = node.type === 'folder';
+                const paddingLeft = (depth * 1.5 + 0.75) + 'rem';
+                
+                const div = document.createElement('div');
+                div.className = 'select-none';
+
+                const header = document.createElement('div');
+                header.className = 'nav-item flex items-center py-2 px-3 cursor-pointer transition-colors duration-200 text-stone-700';
+                header.style.paddingLeft = paddingLeft;
+                
+                if (activeNode && activeNode.id === node.id) {
+                    header.classList.add('active');
+                }
+
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'mr-2 opacity-70';
+                if (isFolder) {
+                    iconSpan.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`; 
+                } else {
+                    iconSpan.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>`; 
+                }
+                header.appendChild(iconSpan);
+
+                const titleSpan = document.createElement('span');
+                titleSpan.className = 'truncate';
+                titleSpan.textContent = node.title;
+                header.appendChild(titleSpan);
+
+                div.appendChild(header);
+
+                header.addEventListener('click', () => {
+                    if (isFolder) {
+                        return; 
+                    }
+                    selectNode(node);
+                    if (window.innerWidth < 768) {
+                        toggleSidebar(false);
+                    }
+                });
+
+                if (isFolder && node.children) {
+                    const childrenContainer = document.createElement('div');
+                    iconSpan.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
+                    
+                    node.children.forEach(child => {
+                        childrenContainer.appendChild(createItem(child, depth + 1));
+                    });
+                    div.appendChild(childrenContainer);
+                }
+
+                return div;
+            }
+
+            SITE_DATA.forEach(node => {
+                navList.appendChild(createItem(node));
+            });
+        }
+
+        function selectNode(node) {
+            activeNode = node;
+            
+            emptyState.classList.add('hidden');
+            toolbar.classList.remove('hidden');
+            
+            filenameDisplay.textContent = node.fileName;
+            
+            previewView.innerHTML = node.content;
+            
+            const fullCode = generateFullHtml(node);
+            codeContent.textContent = fullCode;
+            
+            setMode('preview');
+            
+            renderSidebar();
+        }
+
+        function setMode(mode) {
+            viewMode = mode;
+            if (mode === 'preview') {
+                previewView.classList.remove('hidden');
+                codeView.classList.add('hidden');
+                
+                btnPreview.classList.add('bg-amber-100', 'text-amber-800', 'font-medium');
+                btnPreview.classList.remove('text-stone-600', 'hover:bg-stone-100');
+                
+                btnCode.classList.remove('bg-amber-100', 'text-amber-800', 'font-medium');
+                btnCode.classList.add('text-stone-600', 'hover:bg-stone-100');
+            } else {
+                previewView.classList.add('hidden');
+                codeView.classList.remove('hidden');
+                
+                btnCode.classList.add('bg-amber-100', 'text-amber-800', 'font-medium');
+                btnCode.classList.remove('text-stone-600', 'hover:bg-stone-100');
+                
+                btnPreview.classList.remove('bg-amber-100', 'text-amber-800', 'font-medium');
+                btnPreview.classList.add('text-stone-600', 'hover:bg-stone-100');
+            }
+        }
+
+        function downloadCurrent() {
+            if (!activeNode) return;
+            const fullCode = generateFullHtml(activeNode);
+            const element = document.createElement("a");
+            const file = new Blob([fullCode], {type: 'text/html'});
+            element.href = URL.createObjectURL(file);
+            element.download = activeNode.fileName;
+            document.body.appendChild(element); 
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        function toggleSidebar(show) {
+            if (show) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        }
+
+        btnPreview.addEventListener('click', () => setMode('preview'));
+        btnCode.addEventListener('click', () => setMode('code'));
+        btnDownload.addEventListener('click', downloadCurrent);
+        
+        openSidebarBtn.addEventListener('click', () => toggleSidebar(true));
+        closeSidebarBtn.addEventListener('click', () => toggleSidebar(false));
+        sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+
+        renderSidebar();
+
+    </script>
+</body>
+</html>
